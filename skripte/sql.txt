@@ -1,0 +1,35 @@
+-- erstelle Nutzer py_script und weise ihm das Passwort db_koet_ zu
+create user 'sql_api'@'localhost' identified by 'db_koet_';
+
+-- setze die Rechte durch
+flush privileges;
+
+-- erstelle eine Datenbank namens koethen
+create database koethen;
+
+-- stelle sicher, dass utf-8  Zeichensatz verwendet werden kann
+ALTER DATABASE koethen CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- weise dem user py_script die Datenbank koethen mit allen Rechten zu
+-- die Rechte sollten natürlich nur in der Entwicklungsphase so gelten
+grant all privileges on koethen . * to 'sql_api'@'localhost';
+
+-- setze die Rechte durch
+flush privileges;
+
+-– gehe in Datenbank koethen
+use koethen
+
+-- erstelle die Tabelle sehenswuerdigkeiten mit allen Attributen
+create table items(
+name varchar (50),
+lat float(32),
+lon float(32),
+img_names text,
+text_info text
+);
+
+
+
+
+
